@@ -5,7 +5,7 @@
   "license": "ISC",
   "author": "prakash",
   "type": "module",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "dev": "node --watch src/index.ts",
     "start": "node src/index.ts",
