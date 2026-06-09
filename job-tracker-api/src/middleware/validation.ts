@@ -4,7 +4,6 @@ import { ZodType, ZodError } from 'zod'
 export const validateBody = (schema: ZodType) => {
   return (req: Request, res: Response, next: NextFunction) => {
     try {
-      console.log('testMiddleware', schema.toJSONSchema(), req.body)
       const validatedData = schema.parse(req.body)
       req.body = validatedData
       next()

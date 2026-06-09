@@ -34,17 +34,17 @@ export const jobs = pgTable('jobs', {
     enum: ['LKR', 'USD', 'AUD', 'CAD', 'INR'],
   }).default('LKR'),
   salary: integer('salary'),
-  status: uuid('status')
+  status: integer('status')
     .references(() => status.id)
-    .notNull(),
+    .default(1),
   isRemote: boolean('is_remote').default(false).notNull(),
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 })
 
 export const status = pgTable('status', {
-  id: uuid('id').primaryKey().defaultRandom(),
-  statusName: uuid('status_name').notNull(),
+  id: integer('id').primaryKey(),
+  statusName: varchar('status_name').notNull(),
 })
 
 export const userRelations = relations(users, ({ many }) => ({
